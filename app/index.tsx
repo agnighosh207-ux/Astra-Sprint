@@ -190,15 +190,22 @@ export default function LandingPage() {
             <View style={styles.priceCard}>
               <Text style={styles.priceTier}>CADET</Text>
               <Text style={styles.priceVal}>₹0<Text style={styles.priceMo}>/mo</Text></Text>
-              <Text style={styles.priceDesc}>Basic story engine & core tracking.</Text>
+              <Text style={styles.priceDesc}>3 missions per week and basic fitness tracking.</Text>
             </View>
 
             <Animated.View style={[styles.priceCard, eliteStyle]}>
-              <View style={styles.popularBadge}><Text style={styles.popularText}>BEST VALUE</Text></View>
-              <Text style={styles.priceTier}>PREMIUM OPERATIVE</Text>
-              <Text style={styles.priceVal}>₹299<Text style={styles.priceMo}>/mo</Text></Text>
-              <Text style={styles.priceDesc}>Unlimited missions, HQ upgrades, and smart AI coach. Pay with UPI.</Text>
+              <View style={styles.popularBadge}><Text style={styles.popularText}>BEST VALUE - 40% OFF</Text></View>
+              <Text style={styles.priceTier}>ELITE OPERATIVE</Text>
+              <Text style={styles.priceVal}>₹149<Text style={styles.priceMo}>/mo</Text></Text>
+              <Text style={styles.priceDesc}>Unlimited missions, Cloud Sync, and Faction Wars. Pay via UPI.</Text>
             </Animated.View>
+
+            <View style={[styles.priceCard, { borderColor: Colors.secondary + '40' }]}>
+              <View style={[styles.popularBadge, { backgroundColor: Colors.secondary }]}><Text style={styles.popularText}>GODLY TIER</Text></View>
+              <Text style={styles.priceTier}>GODLY COMMANDER</Text>
+              <Text style={styles.priceVal}>₹499<Text style={styles.priceMo}>/mo</Text></Text>
+              <Text style={styles.priceDesc}>Real-time AI Voice, Exclusive Gear, and Family Sharing.</Text>
+            </View>
           </View>
         </View>
 

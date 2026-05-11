@@ -82,6 +82,11 @@ export default function ActiveMissionScreen() {
         currentBpm = biometricsManager.calculateSimulatedExertion(pace, avgPace);
       }
       setBpm(currentBpm);
+      
+      // KINETIC AUDIO SYNC: Update audio rate based on BPM
+      if (currentBpm) {
+        audioManager.updateKineticRate(currentBpm);
+      }
 
       // Check for Optimal Zone (Simulated range 130-160 for most runners)
       if (currentBpm && currentBpm >= 130 && currentBpm <= 160) {

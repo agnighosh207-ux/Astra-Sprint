@@ -50,13 +50,32 @@ class AudioManager {
     this.isChaseActive = active;
     
     if (active) {
-      // Crossfade to Chase
       await this.ambientSound.setVolumeAsync(0.0);
       await this.chaseSound.setVolumeAsync(1.0);
     } else {
-      // Crossfade back to Ambient
       await this.chaseSound.setVolumeAsync(0.0);
       await this.ambientSound.setVolumeAsync(1.0);
+    }
+  }
+
+  async updateKineticRate(bpm: number) {
+    if (!this.ambientSound && !this.chaseSound) return;
+    
+    // Baseline heart rate is 130 BPM. Every 10 BPM above increases speed by 5%
+    const baseline = 130;
+    let rate = 1.0;
+    
+    if (bpm > baseline) {
+      rate = 1.0 + Math.min(0.5, (bpm - baseline) * 0.005); // Cap at 1.5x
+    } else if (bpm < baseline - 20) {
+      rate = 0.9; // Slow down slightly if heart rate is very low
+    }
+
+    try {
+      if (this.ambientSound) await this.ambientSound.setRateAsync(rate, true);
+      if (this.chaseSound) await this.chaseSound.setRateAsync(rate, true);
+    } catch (e) {
+      console.log('Kinetic Rate Sync Failed:', e);
     }
   }
 
